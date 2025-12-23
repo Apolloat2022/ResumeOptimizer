@@ -1,146 +1,54 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Resume Optimizer Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .gradient-text { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
+    <title>AI Resume Optimizer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="min-h-screen p-4 md:p-8">
-    <div class="max-w-5xl mx-auto">
-        <header class="mb-12 text-center">
-            <h1 class="text-4xl font-bold mb-2 gradient-text">Resume Optimizer Pro</h1>
-            <p class="text-slate-400">Upload your PDF or paste text to get started.</p>
-        </header>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="space-y-6">
-                <div class="glass p-6 rounded-2xl border-dashed border-2 border-sky-500/30">
-                    <label class="block text-sm font-semibold mb-2 text-sky-400">Step 1: Upload PDF Resume</label>
-                    <input type="file" id="pdfFile" accept=".pdf" class="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-500/10 file:text-sky-400 hover:file:bg-sky-500/20 cursor-pointer"/>
-                </div>
-                <div class="glass p-6 rounded-2xl">
-                    <label class="block text-sm font-semibold mb-2 text-slate-400">Resume Content</label>
-                    <textarea id="resume" class="w-full h-48 bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-sm focus:ring-2 focus:ring-sky-500 outline-none transition"></textarea>
-                </div>
-                <div class="glass p-6 rounded-2xl">
-                    <label class="block text-sm font-semibold mb-2 text-indigo-400">Step 2: Job Description</label>
-                    <textarea id="jd" class="w-full h-48 bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-500 outline-none transition"></textarea>
-                </div>
-                <button onclick="analyze()" class="w-full py-4 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 rounded-xl font-bold text-lg shadow-lg shadow-sky-500/20 transition transform hover:-translate-y-1">Analyze & Optimize</button>
-            </div>
-
-            <div id="results-area" class="hidden space-y-6">
-                <div class="glass p-8 rounded-2xl border-t-4 border-sky-500">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-white">Analysis Results</h2>
-                        <div id="score-circle" class="w-16 h-16 rounded-full border-4 border-sky-500 flex items-center justify-center font-bold text-xl text-white">0%</div>
-                    </div>
-                    <div class="space-y-4 text-white">
-                        <div>
-                            <h3 class="text-sky-400 font-semibold mb-1">Found Skills</h3>
-                            <div id="found-tags" class="flex flex-wrap gap-2"></div>
-                        </div>
-                        <hr class="border-slate-700">
-                        <div>
-                            <h3 class="text-rose-400 font-semibold mb-1">Missing Keywords</h3>
-                            <div id="missing-tags" class="flex flex-wrap gap-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="glass p-6 rounded-2xl border-l-4 border-emerald-500">
-                    <h3 class="text-emerald-400 font-semibold mb-2">Optimization Strategy</h3>
-                    <p id="advice" class="text-slate-300 italic text-sm leading-relaxed"></p>
-                </div>
-            </div>
-        </div>
+<body>
+    <div class="container">
+        <h1>AI Resume Optimizer</h1>
+        <textarea id="resume" placeholder="Paste Resume here..."></textarea>
+        <textarea id="jd" placeholder="Paste Job Description here..."></textarea>
+        <button onclick="analyze()">Analyze & Optimize</button>
+        <div id="result" class="result-box"></div>
     </div>
 
     <script>
-        const pdfjsLib = window['pdfjs-dist/build/pdf'];
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js';
-
-        document.getElementById('pdfFile').addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            const reader = new FileReader();
-            reader.onload = async function() {
-                const typedarray = new Uint8Array(this.result);
-                const pdf = await pdfjsLib.getDocument(typedarray).promise;
-                let fullText = "";
-                for (let i = 1; i <= pdf.numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const textContent = await page.getTextContent();
-                    fullText += textContent.items.map(item => item.str).join(" ") + " ";
-                }
-                document.getElementById('resume').value = fullText;
-            };
-            reader.readAsArrayBuffer(file);
-        });
-
         async function analyze() {
-    const resume = document.getElementById('resume').value;
-    const jd = document.getElementById('jd').value;
-    const resultDiv = document.getElementById('result');
-    
-    if (!resume || !jd) {
-        alert("Please paste both a resume and a job description!");
-        return;
-    }
+            const resume = document.getElementById('resume').value;
+            const jd = document.getElementById('jd').value;
+            const resultDiv = document.getElementById('result');
+            
+            if (!resume || !jd) {
+                alert("Please paste both a resume and a job description!");
+                return;
+            }
 
-    resultDiv.innerHTML = "Analyzing... Please wait.";
-    
-    try {
-        const response = await fetch('/api', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ resume: resume, jobDescription: jd })
-        });
-
-        if (!response.ok) throw new Error('Server Error: ' + response.status);
-
-        const data = await response.json();
-        resultDiv.innerHTML = `
-            <h3>Score: ${data.matchScore}%</h3>
-            <p><strong>Found:</strong> ${data.keywords.join(', ')}</p>
-            <p><strong>Missing:</strong> ${data.missing.join(', ')}</p>
-            <p style="color: #0078d4;"><strong>Advice:</strong> ${data.recommendation}</p>
-        `;
-    } catch (error) {
-        resultDiv.innerHTML = "Error: " + error.message;
-        console.error(error);
-    }
-},
+            resultDiv.innerHTML = "Analyzing... Please wait.";
+            
+            try {
+                const response = await fetch('/api', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ resume: resume, jobDescription: jd })
                 });
-                
-                if (!response.ok) throw new Error('Server issues');
-                
+
+                if (!response.ok) throw new Error('API Error: ' + response.status);
+
                 const data = await response.json();
-                document.getElementById('results-area').classList.remove('hidden');
-                document.getElementById('score-circle').innerText = data.matchScore + '%';
-                document.getElementById('advice').innerText = data.recommendation;
-                document.getElementById('found-tags').innerHTML = data.keywords.map(k => `<span class="px-3 py-1 bg-sky-500/30 text-sky-200 border border-sky-500/50 rounded-full text-xs">${k}</span>`).join('');
-                document.getElementById('missing-tags').innerHTML = data.missing.map(k => `<span class="px-3 py-1 bg-rose-500/30 text-rose-200 border border-rose-500/50 rounded-full text-xs">${k}</span>`).join('');
-                document.getElementById('results-area').scrollIntoView({ behavior: 'smooth' });
-            } catch (err) {
-                console.error(err);
-                alert("Error: " + response.status + " - " + response.statusText);
+                resultDiv.innerHTML = `
+                    <h3>Match Score: ${data.matchScore}%</h3>
+                    <p><strong>Keywords Found:</strong> ${data.keywords.join(', ') || 'None'}</p>
+                    <p><strong>Missing:</strong> ${data.missing.join(', ') || 'None'}</p>
+                    <p style="color: #0078d4; margin-top:10px;"><strong>Advice:</strong> ${data.recommendation}</p>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = "Error: " + error.message;
+                console.error("Analysis failed:", error);
             }
         }
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
