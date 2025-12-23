@@ -588,3 +588,199 @@ Export-ModuleMember -Function Optimize-Resume
 Export-ModuleMember -Function Export-OptimizedResume
 Export-ModuleMember -Function Start-InteractiveMode
 Export-ModuleMember -Function Show-Help
+
+function Get-Config {
+    param([string]$Key)
+    
+    $configPath = ".\config.json"
+    if (Test-Path $configPath) {
+        $config = Get-Content -Path $configPath -Raw | ConvertFrom-Json
+        
+        # Navigate to the key (e.g., "defaults.max_pages_to_parse")
+        $value = $config
+        $keyParts = $Key -split '\.'
+        
+        foreach ($part in $keyParts) {
+            if ($value.PSObject.Properties.Name -contains $part) {
+                $value = $value.$part
+            } else {
+                return $null
+            }
+        }
+        return $value
+    }
+    return $null
+}
+
+function Set-Config {
+    param([string]$Key, $Value)
+    
+    $configPath = ".\config.json"
+    if (Test-Path $configPath) {
+        $config = Get-Content -Path $configPath -Raw | ConvertFrom-Json
+    } else {
+        $config = New-Object PSObject
+    }
+    
+    # Simple implementation - for production use a proper JSON manipulator
+    Write-Host "Config update would save: $Key = $Value" -ForegroundColor Yellow
+}
+
+function Suggest-Quantification {
+    param([string]$BulletPoint)
+    
+    $suggestions = @()
+    
+    # Look for opportunities to add numbers
+    if ($BulletPoint -match "(?:managed|led|oversaw|handled).*?team") {
+        $suggestions += "Consider adding team size: 'managed a team of X members'"
+    }
+    
+    if ($BulletPoint -match "(?:increased|improved|reduced|decreased|grew)") {
+        $suggestions += "Add percentage: 'increased efficiency by X%' or 'reduced costs by $X'"
+    }
+    
+    if ($BulletPoint -match "(?:developed|created|built|designed)") {
+        $suggestions += "Specify scale: 'used by X users' or 'processing X transactions daily'"
+    }
+    
+    if ($BulletPoint -match "(?:responsible for|handled|processed)") {
+        $suggestions += "Add volume: 'processing X per month' or 'managing $X budget'"
+    }
+    
+    return $suggestions
+}
+
+function Enhance-BulletPoints {
+    param([string]$ExperienceText)
+    
+    $lines = $ExperienceText -split "`n"
+    $enhancedLines = @()
+    
+    foreach ($line in $lines) {
+        $enhancedLine = $line
+        
+        # Check if it's a bullet point
+        if ($line -match "^\s*[•\-\*]") {
+            $suggestions = Suggest-Quantification -BulletPoint $line
+            
+            if ($suggestions.Count -gt 0) {
+                # Add as comment (for user to consider)
+                $enhancedLines += $line
+                $enhancedLines += "# Suggestion: $($suggestions[0])"
+            } else {
+                $enhancedLines += $line
+            }
+        } else {
+            $enhancedLines += $line
+        }
+    }
+    
+    return $enhancedLines -join "`n"
+}
+
+# Configuration Management Functions
+function Get-Config {
+    <#
+    .SYNOPSIS
+    Retrieves a configuration value from config.json
+    #>
+    param(
+        [string]$Path
+    )
+    
+    $configFile = ".\config.json"
+    if (-not (Test-Path $configFile)) {
+        Write-Warning "Configuration file not found: $configFile"
+        return $null
+    }
+    
+    try {
+        $config = Get-Content -Path $configFile -Raw | ConvertFrom-Json
+        
+        # Navigate through the path (e.g., "defaults.max_pages_to_parse")
+        $value = $config
+        $pathParts = $Path -split '\.'
+        
+        foreach ($part in $pathParts) {
+            if ($value.PSObject.Properties.Name -contains $part) {
+                $value = $value.$part
+            } else {
+                Write-Verbose "Configuration path not found: $Path"
+                return $null
+            }
+        }
+        
+        return $value
+    } catch {
+        Write-Warning "Error reading configuration: $_"
+        return $null
+    }
+}
+
+function Get-IndustryKeywords {
+    <#
+    .SYNOPSIS
+    Gets industry-specific keywords for enhancement suggestions
+    #>
+    param([string]$Industry)
+    
+    $keywords = Get-Config -Path "industry_keywords.$Industry"
+    if ($keywords) {
+        return $keywords
+    } else {
+        # Return default IT keywords if industry not found
+        return @("python", "java", "aws", "docker", "kubernetes", "javascript", "sql")
+    }
+}
+
+function Get-TemplateDescription {
+    <#
+    .SYNOPSIS
+    Gets description of available resume templates
+    #>
+    param([string]$TemplateName)
+    
+    $templates = Get-Config -Path "templates"
+    if ($templates -and $templates.PSObject.Properties.Name -contains $TemplateName) {
+        return $templates.$TemplateName
+    }
+    
+    return "Standard chronological format"
+}
+
+function Show-Configuration {
+    <#
+    .SYNOPSIS
+    Displays current configuration settings
+    #>
+    
+    Write-Host "Current Configuration:" -ForegroundColor Cyan
+    Write-Host "======================" -ForegroundColor Cyan
+    
+    try {
+        $config = Get-Content -Path ".\config.json" -Raw | ConvertFrom-Json
+        
+        # Defaults
+        Write-Host "`nDefaults:" -ForegroundColor Yellow
+        $config.defaults.PSObject.Properties | ForEach-Object {
+            Write-Host "  $($_.Name): $($_.Value)" -ForegroundColor White
+        }
+        
+        # Templates
+        Write-Host "`nTemplates:" -ForegroundColor Yellow
+        $config.templates.PSObject.Properties | ForEach-Object {
+            Write-Host "  $($_.Name): $($_.Value)" -ForegroundColor White
+        }
+        
+        # Industry Keywords
+        Write-Host "`nIndustry Keywords:" -ForegroundColor Yellow
+        $config.industry_keywords.PSObject.Properties | ForEach-Object {
+            $keywords = $_.Value -join ", "
+            Write-Host "  $($_.Name): $keywords" -ForegroundColor White
+        }
+        
+    } catch {
+        Write-Host "Error displaying configuration: $_" -ForegroundColor Red
+    }
+}

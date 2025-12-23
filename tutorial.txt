@@ -1,0 +1,44 @@
+﻿Resume Optimizer - Video Tutorial Script
+========================================
+
+Introduction (0:00-0:30)
+- Show the problem: Resumes not passing ATS systems
+- Show the solution: Your Resume Optimizer
+- Quick demo of optimized vs. original resume
+
+Installation (0:30-1:30)
+1. Download from GitHub (show the repository)
+2. Extract the ZIP file
+3. Double-click Launch.bat
+4. Allow PowerShell to run (show security prompt)
+
+First Use - Interactive Mode (1:30-4:00)
+1. Choose option 1 (Interactive Mode)
+2. Select your resume file (show PDF, DOCX, TXT)
+3. Paste a job description (copy from real job posting)
+4. Watch the analysis in real-time
+5. See the match score and keywords
+6. Open the optimized resume
+
+Advanced Features (4:00-6:00)
+- Using templates (ATS vs Creative vs Academic)
+- Configuring settings in config.json
+- Understanding the match score breakdown
+- Batch processing multiple resumes
+
+Tips for Best Results (6:00-7:00)
+- Use text-based PDFs (not scanned)
+- Copy-paste exact job descriptions
+- Review optimization suggestions
+- Customize for each job application
+
+Troubleshooting (7:00-8:00)
+- PDF parsing issues
+- Permission errors
+- File not found errors
+- Where to get help (GitHub issues)
+
+Conclusion (8:00-8:30)
+- Recap of benefits
+- Call to action (star the GitHub repo)
+- Contact information

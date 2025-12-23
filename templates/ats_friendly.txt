@@ -1,0 +1,29 @@
+﻿[FULL NAME]
+[Professional Title]
+[Phone] | [Email] | [LinkedIn] | [Location]
+
+PROFESSIONAL SUMMARY
+[2-3 sentences highlighting key achievements and skills relevant to target position]
+
+WORK EXPERIENCE
+[Job Title], [Company]
+[City, State] | [Start Date] – [End Date]
+• [Achievement 1 using strong action verb and quantifiable result]
+• [Achievement 2 using strong action verb and quantifiable result]
+• [Achievement 3 using strong action verb and quantifiable result]
+
+[Previous Job Title], [Company]
+[City, State] | [Start Date] – [End Date]
+• [Achievement 1]
+• [Achievement 2]
+• [Achievement 3]
+
+EDUCATION
+[Degree], [Major]
+[University Name], [City, State]
+[Graduation Date] | [GPA if 3.0+]
+
+SKILLS
+Technical: [Skill 1], [Skill 2], [Skill 3], [Skill 4]
+Tools: [Tool 1], [Tool 2], [Tool 3]
+Certifications: [Cert 1], [Cert 2]

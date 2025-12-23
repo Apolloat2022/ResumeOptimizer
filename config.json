@@ -1,0 +1,19 @@
+﻿{
+    "defaults": {
+        "max_pages_to_parse": 5,
+        "match_score_threshold": 70,
+        "output_format": "txt",
+        "auto_open_output": true,
+        "theme": "default"
+    },
+    "templates": {
+        "ats": "Chronological with skills section",
+        "creative": "Functional with summary first",
+        "academic": "Publications and projects focused"
+    },
+    "industry_keywords": {
+        "it": ["python", "java", "aws", "docker", "kubernetes"],
+        "finance": ["excel", "financial modeling", "gaap", "cpa", "quickbooks"],
+        "healthcare": ["hipaa", "patient care", "emr", "cpr", "clinical"]
+    }
+}

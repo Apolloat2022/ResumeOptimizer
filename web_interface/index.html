@@ -1,0 +1,674 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Optimizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .upload-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .upload-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            background: #f8f9ff;
+        }
+        
+        .upload-area:hover {
+            border-color: #667eea;
+            background: #eef2ff;
+        }
+        
+        .upload-area.dragover {
+            border-color: #667eea;
+            background: #e0e7ff;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .file-name {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #666;
+        }
+        
+        .file-types {
+            color: #999;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        .text-input-area {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: white;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        textarea {
+            flex: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            padding: 10px;
+            background: transparent;
+        }
+        
+        textarea::placeholder {
+            color: #999;
+        }
+        
+        .char-count {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: right;
+            margin-top: 10px;
+        }
+        
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-success {
+            background: #10b981;
+        }
+        
+        .btn-success:hover {
+            background: #0da271;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .sample-jobs {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .sample-job-link {
+            color: #667eea;
+            cursor: pointer;
+            text-decoration: underline;
+            margin: 0 5px;
+        }
+        
+        .sample-job-link:hover {
+            color: #5a67d8;
+        }
+        
+        .status-indicator {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .status-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-processing {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .results-section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #27ae60;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .keyword-tag {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px;
+            display: inline-block;
+        }
+        
+        .suggestion-item {
+            background: #f8fafc;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1><span style="color: #667eea;">🤖</span> Resume Optimizer</h1>
+            <p>AI-powered tool to tailor your resume for specific job descriptions</p>
+            <div class="status-indicator status-success" id="status">
+                ✅ System Ready
+            </div>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <h2 class="section-title">📤 Upload & Analyze</h2>
+            
+            <div class="upload-grid">
+                <!-- Left: Resume Upload -->
+                <div>
+                    <h3 class="section-title">📄 Your Resume</h3>
+                    <div class="upload-area" id="resumeUploadArea">
+                        <div class="upload-icon">
+                            📁
+                        </div>
+                        <p><strong>Drag & drop your resume here</strong></p>
+                        <p class="file-name" id="resumeFileName">No file selected</p>
+                        <p class="file-types">Supports: PDF, DOCX, TXT</p>
+                        <button class="btn" onclick="document.getElementById('resumeFile').click()">
+                            📂 Browse Files
+                        </button>
+                        <input type="file" id="resumeFile" accept=".pdf,.docx,.doc,.txt">
+                    </div>
+                </div>
+                
+                <!-- Right: Job Description Input -->
+                <div>
+                    <h3 class="section-title">📝 Job Description</h3>
+                    <div class="text-input-area">
+                        <textarea 
+                            id="jobDescriptionText" 
+                            placeholder="Paste or type the job description here...
+                            
+Example:
+• Position: Senior Software Engineer
+• Requirements: 5+ years experience with Python, JavaScript
+• Responsibilities: Design systems, mentor team members
+• Skills: AWS, Docker, React, SQL"
+                            rows="10"
+                        ></textarea>
+                        <div class="char-count" id="charCount">0 characters</div>
+                    </div>
+                    
+                    <div class="sample-jobs">
+                        Quick samples: 
+                        <span class="sample-job-link" onclick="loadSample('software')">Software Engineer</span> • 
+                        <span class="sample-job-link" onclick="loadSample('data')">Data Analyst</span> • 
+                        <span class="sample-job-link" onclick="loadSample('manager')">Project Manager</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-success" id="optimizeBtn" style="padding: 18px 40px; font-size: 1.2rem;">
+                    ⚡ Analyze & Optimize Resume
+                </button>
+                <button class="btn" id="quickAnalyzeBtn">
+                    🔍 Quick Preview
+                </button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection">
+            <h2 class="section-title">📊 Optimization Results</h2>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <h3>Match Score</h3>
+                <div class="score-display" id="matchScore">85%</div>
+                <p>How well your resume matches the job description</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <!-- Left: Suggestions -->
+                <div>
+                    <h3>💡 Suggestions</h3>
+                    <ul id="suggestionsList" style="list-style: none; padding-left: 0;">
+                        <li class="suggestion-item">Add quantifiable achievements to experience section</li>
+                        <li class="suggestion-item">Include keywords from job description in skills</li>
+                        <li class="suggestion-item">Reorder experience to highlight relevant projects</li>
+                    </ul>
+                </div>
+                
+                <!-- Right: Keywords -->
+                <div>
+                    <h3>🔑 Keywords to Add</h3>
+                    <div id="keywordsList" style="margin-top: 15px;">
+                        <span class="keyword-tag">Python</span>
+                        <span class="keyword-tag">AWS</span>
+                        <span class="keyword-tag">React</span>
+                        <span class="keyword-tag">Agile</span>
+                        <span class="keyword-tag">DevOps</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons" style="margin-top: 40px;">
+                <button class="btn btn-success" id="downloadBtn">
+                    📥 Download Optimized Resume
+                </button>
+                <button class="btn" id="viewReportBtn">
+                    📋 View Detailed Report
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Job description samples
+        const samples = {
+            software: `Senior Software Engineer
+
+Responsibilities:
+• Design, develop, and maintain scalable software systems
+• Write clean, efficient, and well-documented code
+• Collaborate with cross-functional teams
+• Conduct code reviews and provide feedback
+• Troubleshoot and debug complex issues
+
+Requirements:
+• 5+ years of software development experience
+• Strong proficiency in Python, JavaScript, React
+• Experience with cloud platforms (AWS, Azure, GCP)
+• Knowledge of containerization (Docker, Kubernetes)
+• Experience with databases (SQL and NoSQL)
+• Strong problem-solving skills
+
+Preferred:
+• Experience with microservices architecture
+• Knowledge of CI/CD pipelines
+• Familiarity with Agile/Scrum methodologies`,
+            
+            data: `Data Analyst
+
+Responsibilities:
+• Analyze large datasets and create reports
+• Develop dashboards to visualize data insights
+• Identify trends and patterns
+• Collaborate with stakeholders
+• Clean and validate data
+
+Requirements:
+• 3+ years of data analysis experience
+• Proficiency in SQL and Python
+• Experience with data visualization tools
+• Strong analytical skills
+• Knowledge of statistical analysis`,
+            
+            manager: `Project Manager
+
+Responsibilities:
+• Lead project planning and implementation
+• Define project scope, goals, and deliverables
+• Develop detailed project plans
+• Manage project budget and resources
+• Coordinate with cross-functional teams
+
+Requirements:
+• 5+ years of project management experience
+• PMP certification preferred
+• Experience with Agile methodologies
+• Proficiency with project management tools
+• Strong leadership and communication skills`
+        };
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const resumeUploadArea = document.getElementById('resumeUploadArea');
+            const resumeFileInput = document.getElementById('resumeFile');
+            const resumeFileName = document.getElementById('resumeFileName');
+            const jobDescriptionText = document.getElementById('jobDescriptionText');
+            const charCount = document.getElementById('charCount');
+            const optimizeBtn = document.getElementById('optimizeBtn');
+            const quickAnalyzeBtn = document.getElementById('quickAnalyzeBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const statusElement = document.getElementById('status');
+            
+            // Resume file upload handling
+            resumeUploadArea.addEventListener('click', () => {
+                resumeFileInput.click();
+            });
+            
+            resumeUploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                resumeUploadArea.classList.add('dragover');
+            });
+            
+            resumeUploadArea.addEventListener('dragleave', () => {
+                resumeUploadArea.classList.remove('dragover');
+            });
+            
+            resumeUploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                resumeUploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files.length > 0) {
+                    resumeFileInput.files = e.dataTransfer.files;
+                    updateResumeFileName();
+                }
+            });
+            
+            resumeFileInput.addEventListener('change', updateResumeFileName);
+            
+            function updateResumeFileName() {
+                if (resumeFileInput.files.length > 0) {
+                    const file = resumeFileInput.files[0];
+                    resumeFileName.textContent = file.name;
+                    resumeFileName.style.color = '#10b981';
+                    
+                    // Update icon
+                    const icon = resumeUploadArea.querySelector('.upload-icon');
+                    icon.textContent = '✅';
+                    icon.style.color = '#10b981';
+                    
+                    showStatus(`Resume uploaded: ${file.name}`, 'success');
+                    checkReadyState();
+                }
+            }
+            
+            // Job description text input
+            jobDescriptionText.addEventListener('input', function() {
+                const length = this.value.length;
+                charCount.textContent = `${length} characters`;
+                
+                if (length > 0) {
+                    checkReadyState();
+                }
+            });
+            
+            // Load sample job descriptions
+            window.loadSample = function(type) {
+                jobDescriptionText.value = samples[type];
+                jobDescriptionText.dispatchEvent(new Event('input'));
+                showStatus(`Loaded ${type} sample job description`, 'success');
+            };
+            
+            // Check if ready to optimize
+            function checkReadyState() {
+                const hasResume = resumeFileInput.files.length > 0;
+                const hasJobDesc = jobDescriptionText.value.trim().length > 50;
+                
+                if (hasResume && hasJobDesc) {
+                    optimizeBtn.disabled = false;
+                    quickAnalyzeBtn.disabled = false;
+                    optimizeBtn.innerHTML = '⚡ Analyze & Optimize Now';
+                    showStatus('Ready to optimize!', 'success');
+                } else {
+                    optimizeBtn.disabled = true;
+                    quickAnalyzeBtn.disabled = true;
+                    optimizeBtn.innerHTML = '📤 Upload Resume & Enter Job Description';
+                }
+            }
+            
+            // Optimize button click
+            optimizeBtn.addEventListener('click', function() {
+                const resumeFile = resumeFileInput.files[0];
+                const jobDesc = jobDescriptionText.value.trim();
+                
+                if (!resumeFile) {
+                    showStatus('Please upload a resume first', 'error');
+                    return;
+                }
+                
+                if (!jobDesc) {
+                    showStatus('Please enter a job description', 'error');
+                    return;
+                }
+                
+                // Show processing
+                showStatus('Analyzing resume and job description...', 'processing');
+                optimizeBtn.disabled = true;
+                optimizeBtn.innerHTML = '⏳ Processing...';
+                
+                // Simulate processing
+                setTimeout(() => {
+                    // Show results
+                    resultsSection.style.display = 'block';
+                    
+                    // Calculate simulated score
+                    const baseScore = 60;
+                    const lengthBonus = Math.min(30, Math.floor(jobDesc.length / 100));
+                    const keywordBonus = Math.min(15, (jobDesc.match(/\b\w{5,}\b/g) || []).length / 2);
+                    const score = Math.min(95, baseScore + lengthBonus + keywordBonus);
+                    
+                    // Update match score
+                    document.getElementById('matchScore').textContent = `${score}%`;
+                    
+                    // Extract keywords from job description
+                    const words = jobDesc.toLowerCase().match(/\b\w+\b/g) || [];
+                    const commonWords = ['the', 'and', 'for', 'with', 'this', 'that'];
+                    const keywords = [...new Set(words
+                        .filter(word => word.length > 4 && !commonWords.includes(word))
+                        .slice(0, 10))];
+                    
+                    // Update keywords display
+                    const keywordsList = document.getElementById('keywordsList');
+                    keywordsList.innerHTML = keywords.map(word => 
+                        `<span class="keyword-tag">${word}</span>`
+                    ).join('');
+                    
+                    // Update suggestions based on score
+                    let suggestions = [];
+                    if (score < 70) {
+                        suggestions = [
+                            "Add more specific technical skills mentioned in the job description",
+                            "Include quantifiable achievements in your experience section",
+                            "Reorder your experience to highlight the most relevant positions first"
+                        ];
+                    } else if (score < 85) {
+                        suggestions = [
+                            "Add 2-3 more keywords from the job description to your skills section",
+                            "Include metrics in your bullet points (increased X by Y%, reduced Z by A%)",
+                            "Add a professional summary tailored to this specific role"
+                        ];
+                    } else {
+                        suggestions = [
+                            "Your resume is well-matched! Consider adding a cover letter",
+                            "Highlight your most relevant project at the top of your experience",
+                            "Double-check that all required skills are clearly listed"
+                        ];
+                    }
+                    
+                    const suggestionsList = document.getElementById('suggestionsList');
+                    suggestionsList.innerHTML = suggestions.map(s => 
+                        `<li class="suggestion-item">${s}</li>`
+                    ).join('');
+                    
+                    // Reset button
+                    optimizeBtn.disabled = false;
+                    optimizeBtn.innerHTML = '⚡ Optimize Another';
+                    
+                    showStatus(`Optimization complete! Match score: ${score}%`, 'success');
+                    
+                    // Scroll to results
+                    resultsSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                }, 2000); // 2 second delay
+            });
+            
+            // Quick analyze button
+            quickAnalyzeBtn.addEventListener('click', function() {
+                const jobDesc = jobDescriptionText.value.trim();
+                
+                if (!jobDesc) {
+                    showStatus('Please enter a job description first', 'error');
+                    return;
+                }
+                
+                // Extract and show keywords
+                const words = jobDesc.toLowerCase().match(/\b\w+\b/g) || [];
+                const commonWords = ['the', 'and', 'for', 'with', 'this', 'that'];
+                const keywords = [...new Set(words
+                    .filter(word => word.length > 3 && !commonWords.includes(word))
+                    .slice(0, 8))];
+                
+                showStatus(`Found ${keywords.length} key terms in job description`, 'success');
+                
+                // Show quick preview
+                alert(`Quick Analysis:\n\nKey terms found:\n• ${keywords.join('\n• ')}\n\nUpload resume for full optimization.`);
+            });
+            
+            // Download button
+            document.getElementById('downloadBtn').addEventListener('click', function() {
+                showStatus('Generating optimized resume...', 'processing');
+                setTimeout(() => {
+                    showStatus('Optimized resume ready! (Simulation)', 'success');
+                    alert('In the full version, this would download your optimized resume file.');
+                }, 1500);
+            });
+            
+            // View report button
+            document.getElementById('viewReportBtn').addEventListener('click', function() {
+                showStatus('Generating detailed report...', 'processing');
+                setTimeout(() => {
+                    showStatus('Report generated! (Simulation)', 'success');
+                    alert('Detailed optimization report would open here.');
+                }, 1000);
+            });
+            
+            // Status display function
+            function showStatus(message, type = 'info') {
+                let icon = 'ℹ️';
+                if (type === 'success') icon = '✅';
+                if (type === 'error') icon = '❌';
+                if (type === 'processing') icon = '⏳';
+                
+                statusElement.innerHTML = `${icon} ${message}`;
+                statusElement.className = `status-indicator status-${type}`;
+            }
+            
+            // Initialize
+            checkReadyState();
+            showStatus('Upload your resume and enter a job description to begin', 'success');
+            
+            // Load a sample by default for demo
+            setTimeout(() => {
+                if (!jobDescriptionText.value.trim()) {
+                    loadSample('software');
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
