@@ -107,12 +107,13 @@
                 document.getElementById('results-area').scrollIntoView({ behavior: 'smooth' });
             } catch (err) {
                 console.error(err);
-                alert("Cloud API Error. Please check Vercel logs.");
+                alert("Error: " + response.status + " - " + response.statusText);
             }
         }
     </script>
 </body>
 </html>
+
 
 
 
