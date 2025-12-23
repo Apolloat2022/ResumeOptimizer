@@ -3,30 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Resume Optimizer</title>
+    <title>AI Resume Optimizer - Transform Your Career</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>AI Resume Optimizer</h1>
-        <textarea id="resume" placeholder="Paste Resume here..."></textarea>
-        <textarea id="jd" placeholder="Paste Job Description here..."></textarea>
-        <button onclick="analyze()">Analyze & Optimize</button>
-        <div id="result" class="result-box"></div>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    
+    <div class="hero-section">
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                        <circle cx="20" cy="20" r="18" fill="url(#gradient)" />
+                        <path d="M20 10 L25 20 L20 30 L15 20 Z" fill="white" opacity="0.9"/>
+                    </svg>
+                    <span>AI Resume Optimizer</span>
+                </div>
+            </div>
+            
+            <h1 class="main-title">Transform Your Resume<br/>With AI Intelligence</h1>
+            <p class="subtitle">Analyze, optimize, and match your resume to any job description in seconds</p>
+            
+            <div class="input-grid">
+                <div class="input-card">
+                    <div class="card-header">
+                        <span class="icon">📄</span>
+                        <h3>Your Resume</h3>
+                    </div>
+                    <textarea id="resume" placeholder="Paste your complete resume here..."></textarea>
+                    <div class="char-count" id="resumeCount">0 characters</div>
+                </div>
+                
+                <div class="input-card">
+                    <div class="card-header">
+                        <span class="icon">🎯</span>
+                        <h3>Job Description</h3>
+                    </div>
+                    <textarea id="jd" placeholder="Paste the target job description here..."></textarea>
+                    <div class="char-count" id="jdCount">0 characters</div>
+                </div>
+            </div>
+            
+            <button class="analyze-btn" onclick="analyze()">
+                <span class="btn-text">Analyze & Optimize</span>
+                <span class="btn-icon">✨</span>
+            </button>
+            
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your resume with AI...</p>
+            </div>
+            
+            <div id="result" class="result-section hidden"></div>
+        </div>
     </div>
 
     <script>
+        // Character counters
+        document.getElementById('resume').addEventListener('input', function(e) {
+            document.getElementById('resumeCount').textContent = e.target.value.length + ' characters';
+        });
+        
+        document.getElementById('jd').addEventListener('input', function(e) {
+            document.getElementById('jdCount').textContent = e.target.value.length + ' characters';
+        });
+
         async function analyze() {
             const resume = document.getElementById('resume').value;
             const jd = document.getElementById('jd').value;
             const resultDiv = document.getElementById('result');
+            const loadingDiv = document.getElementById('loading');
             
             if (!resume || !jd) {
-                alert("Please paste both a resume and a job description!");
+                showNotification('Please fill in both fields', 'error');
                 return;
             }
 
-            resultDiv.innerHTML = "Analyzing... Please wait.";
+            resultDiv.classList.add('hidden');
+            loadingDiv.classList.remove('hidden');
             
             try {
                 const response = await fetch('/api', {
@@ -38,17 +94,93 @@
                 if (!response.ok) throw new Error('API Error: ' + response.status);
 
                 const data = await response.json();
-                resultDiv.innerHTML = `
-                    <h3>Match Score: ${data.matchScore}%</h3>
-                    <p><strong>Keywords Found:</strong> ${data.keywords.join(', ') || 'None'}</p>
-                    <p><strong>Missing:</strong> ${data.missing.join(', ') || 'None'}</p>
-                    <p style="color: #0078d4; margin-top:10px;"><strong>Advice:</strong> ${data.recommendation}</p>
-                `;
+                loadingDiv.classList.add('hidden');
+                
+                displayResults(data);
+                
             } catch (error) {
-                resultDiv.innerHTML = "Error: " + error.message;
+                loadingDiv.classList.add('hidden');
+                showNotification('Error: ' + error.message, 'error');
                 console.error("Analysis failed:", error);
             }
         }
+        
+        function displayResults(data) {
+            const resultDiv = document.getElementById('result');
+            const scoreColor = data.matchScore >= 80 ? '#10b981' : data.matchScore >= 60 ? '#f59e0b' : '#ef4444';
+            
+            resultDiv.innerHTML = `
+                <div class="result-card score-card" style="border-color: ${scoreColor}">
+                    <div class="score-circle" style="background: conic-gradient(${scoreColor} ${data.matchScore * 3.6}deg, rgba(255,255,255,0.1) 0deg)">
+                        <div class="score-inner">
+                            <div class="score-value">${data.matchScore}%</div>
+                            <div class="score-label">Match Score</div>
+                        </div>
+                    </div>
+                    <p class="recommendation">${data.recommendation}</p>
+                </div>
+                
+                <div class="result-grid">
+                    <div class="result-card">
+                        <h3><span class="badge badge-success">${data.keywords.length}</span> Keywords Found</h3>
+                        <div class="keyword-list">
+                            ${data.keywords.map(k => `<span class="keyword found">${k}</span>`).join('')}
+                        </div>
+                    </div>
+                    
+                    ${data.missing.length > 0 ? `
+                    <div class="result-card">
+                        <h3><span class="badge badge-warning">${data.missing.length}</span> Missing Keywords</h3>
+                        <div class="keyword-list">
+                            ${data.missing.map(k => `<span class="keyword missing">${k}</span>`).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+                
+                <div class="result-card optimized-card">
+                    <h3>📝 Optimized Resume</h3>
+                    <div class="optimized-content">
+                        <pre>${data.optimizedResume}</pre>
+                    </div>
+                    <button class="copy-btn" onclick="copyToClipboard()">
+                        <span>📋</span> Copy Optimized Resume
+                    </button>
+                </div>
+            `;
+            
+            resultDiv.classList.remove('hidden');
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+        function copyToClipboard() {
+            const text = document.querySelector('.optimized-content pre').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Copied to clipboard!', 'success');
+            });
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
     </script>
+    
+    <svg width="0" height="0">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
 </body>
 </html>
