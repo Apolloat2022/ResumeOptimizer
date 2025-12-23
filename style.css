@@ -508,3 +508,20 @@ textarea::placeholder {
         justify-content: center;
     }
 }
+
+.card-header-with-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.card-header-with-actions h3 {
+    margin: 0;
+}
+
+.card-header-with-actions .copy-btn {
+    margin: 0;
+}

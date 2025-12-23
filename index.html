@@ -24,7 +24,7 @@
             </div>
             
             <h1 class="main-title">Transform Your Resume<br/>With AI Intelligence</h1>
-            <p class="subtitle">Analyze, optimize, and generate ATS-friendly PDF resumes in seconds</p>
+            <p class="subtitle">Analyze and optimize your resume to match any job description</p>
             
             <div class="input-grid">
                 <div class="input-card">
@@ -32,24 +32,6 @@
                         <span class="icon">📄</span>
                         <h3>Your Resume</h3>
                     </div>
-                    
-                    <div class="upload-section">
-                        <label for="pdfUpload" class="upload-btn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="17 8 12 3 7 8"></polyline>
-                                <line x1="12" y1="3" x2="12" y2="15"></line>
-                            </svg>
-                            Upload PDF Resume
-                        </label>
-                        <input type="file" id="pdfUpload" accept=".pdf" style="display: none;">
-                        <span class="upload-status" id="uploadStatus">No file selected</span>
-                    </div>
-                    
-                    <div class="divider">
-                        <span>OR</span>
-                    </div>
-                    
                     <textarea id="resume" placeholder="Paste your complete resume here..."></textarea>
                     <div class="char-count" id="resumeCount">0 characters</div>
                 </div>
@@ -81,25 +63,6 @@
     </div>
 
     <script>
-        let uploadedPdfData = null;
-        
-        // PDF Upload Handler
-        document.getElementById('pdfUpload').addEventListener('change', async function(e) {
-            const file = e.target.files[0];
-            if (file && file.type === 'application/pdf') {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    uploadedPdfData = event.target.result;
-                    document.getElementById('uploadStatus').textContent = `✓ ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
-                    document.getElementById('uploadStatus').style.color = '#10b981';
-                    showNotification('PDF uploaded successfully!', 'success');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                showNotification('Please upload a valid PDF file', 'error');
-            }
-        });
-        
         // Character counters
         document.getElementById('resume').addEventListener('input', function(e) {
             document.getElementById('resumeCount').textContent = e.target.value.length + ' characters';
@@ -110,13 +73,24 @@
         });
 
         async function analyze() {
-            const resumeText = document.getElementById('resume').value;
-            const jd = document.getElementById('jd').value;
+            const resumeText = document.getElementById('resume').value.trim();
+            const jdText = document.getElementById('jd').value.trim();
             const resultDiv = document.getElementById('result');
             const loadingDiv = document.getElementById('loading');
             
-            if ((!resumeText && !uploadedPdfData) || !jd) {
-                showNotification('Please provide both a resume (text or PDF) and a job description', 'error');
+            // Validation
+            if (!resumeText || !jdText) {
+                showNotification('⚠️ Please paste both a resume and a job description', 'error');
+                return;
+            }
+            
+            if (resumeText.length < 50) {
+                showNotification('⚠️ Resume seems too short. Please paste your complete resume.', 'error');
+                return;
+            }
+            
+            if (jdText.length < 30) {
+                showNotification('⚠️ Job description seems too short. Please paste the complete JD.', 'error');
                 return;
             }
 
@@ -124,33 +98,46 @@
             loadingDiv.classList.remove('hidden');
             
             try {
-                const requestData = {
-                    resume: resumeText,
-                    jobDescription: jd,
-                    pdfFile: uploadedPdfData,
-                    generatePdf: true,
-                    name: 'Candidate'
-                };
+                console.log('Sending request...', {
+                    resumeLength: resumeText.length,
+                    jdLength: jdText.length
+                });
                 
                 const response = await fetch('/api', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(requestData)
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        resume: resumeText,
+                        jobDescription: jdText
+                    })
                 });
 
+                console.log('Response status:', response.status);
+                
                 if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'API Error: ' + response.status);
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'API Error: ' + response.status);
+                    } else {
+                        const textError = await response.text();
+                        console.error('Non-JSON response:', textError.substring(0, 200));
+                        throw new Error('Server returned an error. Status: ' + response.status);
+                    }
                 }
 
                 const data = await response.json();
-                loadingDiv.classList.add('hidden');
+                console.log('Response data:', data);
                 
+                loadingDiv.classList.add('hidden');
                 displayResults(data);
                 
             } catch (error) {
                 loadingDiv.classList.add('hidden');
-                showNotification('Error: ' + error.message, 'error');
+                showNotification('❌ Error: ' + error.message, 'error');
                 console.error("Analysis failed:", error);
             }
         }
@@ -158,20 +145,6 @@
         function displayResults(data) {
             const resultDiv = document.getElementById('result');
             const scoreColor = data.matchScore >= 80 ? '#10b981' : data.matchScore >= 60 ? '#f59e0b' : '#ef4444';
-            
-            let pdfDownloadButton = '';
-            if (data.optimizedPdf) {
-                pdfDownloadButton = `
-                    <button class="pdf-btn" onclick="downloadPdf('${data.optimizedPdf}')">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Download ATS-Friendly PDF
-                    </button>
-                `;
-            }
             
             resultDiv.innerHTML = `
                 <div class="result-card score-card" style="border-color: ${scoreColor}">
@@ -188,7 +161,9 @@
                     <div class="result-card">
                         <h3><span class="badge badge-success">${data.keywords.length}</span> Keywords Found</h3>
                         <div class="keyword-list">
-                            ${data.keywords.length > 0 ? data.keywords.map(k => `<span class="keyword found">${k}</span>`).join('') : '<p style="color: rgba(255,255,255,0.6)">No matching keywords found</p>'}
+                            ${data.keywords.length > 0 ? 
+                                data.keywords.map(k => `<span class="keyword found">${k.toUpperCase()}</span>`).join('') : 
+                                '<p style="color: rgba(255,255,255,0.6)">No matching keywords found</p>'}
                         </div>
                     </div>
                     
@@ -196,58 +171,43 @@
                     <div class="result-card">
                         <h3><span class="badge badge-warning">${data.missing.length}</span> Missing Keywords</h3>
                         <div class="keyword-list">
-                            ${data.missing.map(k => `<span class="keyword missing">${k}</span>`).join('')}
+                            ${data.missing.map(k => `<span class="keyword missing">${k.toUpperCase()}</span>`).join('')}
                         </div>
                     </div>
                     ` : ''}
                 </div>
                 
                 <div class="result-card optimized-card">
-                    <h3>📝 Optimized Resume</h3>
-                    <div class="optimized-content">
-                        <pre>${data.optimizedResume}</pre>
-                    </div>
-                    <div class="button-group">
+                    <div class="card-header-with-actions">
+                        <h3>📝 Optimized Resume Report</h3>
                         <button class="copy-btn" onclick="copyToClipboard()">
                             <span>📋</span> Copy to Clipboard
                         </button>
-                        ${pdfDownloadButton}
+                    </div>
+                    <div class="optimized-content">
+                        <pre>${escapeHtml(data.optimizedResume)}</pre>
                     </div>
                 </div>
             `;
             
             resultDiv.classList.remove('hidden');
             resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            showNotification('✅ Analysis complete!', 'success');
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
         
         function copyToClipboard() {
             const text = document.querySelector('.optimized-content pre').textContent;
             navigator.clipboard.writeText(text).then(() => {
-                showNotification('✓ Copied to clipboard!', 'success');
+                showNotification('✅ Copied to clipboard!', 'success');
+            }).catch(err => {
+                showNotification('❌ Failed to copy', 'error');
             });
-        }
-        
-        function downloadPdf(base64Data) {
-            const blob = base64ToBlob(base64Data, 'application/pdf');
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'optimized-resume-ats.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            URL.revokeObjectURL(url);
-            showNotification('✓ PDF downloaded!', 'success');
-        }
-        
-        function base64ToBlob(base64, mimeType) {
-            const byteCharacters = atob(base64);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            return new Blob([byteArray], { type: mimeType });
         }
         
         function showNotification(message, type) {
