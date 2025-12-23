@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -107,12 +107,13 @@
                 document.getElementById('results-area').scrollIntoView({ behavior: 'smooth' });
             } catch (err) {
                 console.error(err);
-                alert("Connection Error. Please check if PowerShell is still running.");
+                alert("Cloud API Error. Please check Vercel logs.");
             }
         }
     </script>
 </body>
 </html>
+
 
 
 
