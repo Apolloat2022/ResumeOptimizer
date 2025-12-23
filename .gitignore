@@ -1,0 +1,18 @@
+﻿# Generated output files
+outputs/
+logs/
+libs/
+
+# System files
+Thumbs.db
+.DS_Store
+*.tmp
+*.temp
+
+# User-specific files
+*.user
+*.suo
+
+# PowerShell modules (already in modules/)
+*.psd1
+*.ps1xml

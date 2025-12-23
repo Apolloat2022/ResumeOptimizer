@@ -1,0 +1,26 @@
+﻿Senior Software Developer Position
+
+We are seeking an experienced Senior Software Developer to join our team.
+
+Required Qualifications:
+- 4+ years of software development experience
+- Proficient in JavaScript and React
+- Strong experience with Node.js and REST APIs
+- Knowledge of AWS cloud services
+- Familiar with Agile methodologies
+- Experience with SQL databases
+- Understanding of Docker and containerization
+
+Preferred Skills:
+- Experience with TypeScript
+- Knowledge of Kubernetes
+- Understanding of CI/CD pipelines
+- Python programming experience
+
+Responsibilities:
+- Develop and maintain scalable web applications
+- Design and implement RESTful APIs
+- Deploy applications to AWS cloud infrastructure
+- Collaborate with cross-functional teams
+- Write clean, maintainable, and testable code
+- Mentor junior developers

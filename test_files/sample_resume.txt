@@ -1,0 +1,34 @@
+﻿JOHN DOE
+Software Developer
+(123) 456-7890 | john.doe@email.com | linkedin.com/in/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced software developer with 5 years in web development and cloud technologies. 
+Skilled in troubleshooting and implementing technical solutions.
+
+EXPERIENCE
+Senior Software Developer
+ABC Corporation, Anytown, USA
+June 2019 - Present
+
+• Developed web applications using JavaScript and React
+• Implemented REST APIs for data integration
+• Collaborated with teams using Agile methodologies
+• Deployed applications to AWS cloud infrastructure
+
+Software Developer
+XYZ Solutions, Othertown, USA
+January 2017 - May 2019
+
+• Created responsive web applications
+• Maintained code quality and performed code reviews
+• Assisted with software installation and configuration
+• Documented technical procedures and solutions
+
+EDUCATION
+Bachelor of Science in Computer Science
+University of Technology, Anytown, USA
+Graduated: May 2016
+
+SKILLS
+JavaScript, React, Node.js, AWS, SQL, Git

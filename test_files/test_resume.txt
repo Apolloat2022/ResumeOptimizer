@@ -1,0 +1,34 @@
+﻿JANE SMITH
+Software Engineer
+(555) 123-4567 | jane.smith@email.com | linkedin.com/in/janesmith
+
+SUMMARY
+Software engineer with 4 years experience in full-stack development. 
+Proficient in JavaScript, React, and Node.js.
+
+EXPERIENCE
+Full Stack Developer
+Tech Innovations Inc.
+2020 - Present
+
+• Developed and maintained web applications using React and Node.js
+• Created RESTful APIs for data management
+• Implemented AWS services for cloud deployment
+• Collaborated using Agile methodologies
+• Wrote unit tests and performed code reviews
+
+Junior Developer
+Startup Solutions LLC
+2018 - 2020
+
+• Assisted in frontend development with React
+• Worked on database design and SQL queries
+• Participated in team meetings and code reviews
+• Fixed bugs and implemented new features
+
+EDUCATION
+Bachelor of Computer Science
+State University, 2018
+
+SKILLS
+JavaScript, React, Node.js, Python, SQL, AWS, Git, Docker
