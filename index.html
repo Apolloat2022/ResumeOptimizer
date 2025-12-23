@@ -85,14 +85,38 @@
         });
 
         async function analyze() {
-            const resume = document.getElementById('resume').value;
-            const jd = document.getElementById('jd').value;
-            if(!resume || !jd) return;
+    const resume = document.getElementById('resume').value;
+    const jd = document.getElementById('jd').value;
+    const resultDiv = document.getElementById('result');
+    
+    if (!resume || !jd) {
+        alert("Please paste both a resume and a job description!");
+        return;
+    }
 
-            try {
-                const response = await fetch('/api', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+    resultDiv.innerHTML = "Analyzing... Please wait.";
+    
+    try {
+        const response = await fetch('/api', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ resume: resume, jobDescription: jd })
+        });
+
+        if (!response.ok) throw new Error('Server Error: ' + response.status);
+
+        const data = await response.json();
+        resultDiv.innerHTML = `
+            <h3>Score: ${data.matchScore}%</h3>
+            <p><strong>Found:</strong> ${data.keywords.join(', ')}</p>
+            <p><strong>Missing:</strong> ${data.missing.join(', ')}</p>
+            <p style="color: #0078d4;"><strong>Advice:</strong> ${data.recommendation}</p>
+        `;
+    } catch (error) {
+        resultDiv.innerHTML = "Error: " + error.message;
+        console.error(error);
+    }
+},
                     body: JSON.stringify({ resume: resume, jobDescription: jd })
                 });
                 
@@ -113,6 +137,7 @@
     </script>
 </body>
 </html>
+
 
 
 
