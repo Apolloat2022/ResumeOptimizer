@@ -90,7 +90,7 @@
             if(!resume || !jd) return;
 
             try {
-                const response = await fetch('/api/optimize', {
+                const response = await fetch('/api', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ resume: resume, jobDescription: jd })
@@ -113,6 +113,7 @@
     </script>
 </body>
 </html>
+
 
 
 
