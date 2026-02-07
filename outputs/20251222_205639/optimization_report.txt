@@ -1,0 +1,46 @@
+﻿RESUME OPTIMIZATION REPORT
+===========================
+Generated: 2025-12-22 20:56:39
+
+MATCH ANALYSIS
+--------------
+Overall Match Score: 9.09%
+
+Job Description Keywords: 44
+Matched Keywords: 4
+Title Match Bonus: 0
+
+TOP MATCHING KEYWORDS:
+----------------------
+web, technical, may, and
+
+RECOMMENDATIONS:
+----------------
+1. Consider adding these skills to your resume
+2. Quantify achievements where possible
+3. Use strong action verbs
+4. Ensure consistent formatting
+
+OPTIMIZED RESUME PREVIEW:
+-------------------------
+Results-driven also requires familiarity with AI professional
+JOHN DOE
+Software Developer
+(123) 456-7890 | john.doe@email.com | linkedin.com/in/johndoe
+
+PROFESSIONAL SUMMARY
+Experienced software developer with 5 years in web development and cloud technologies. 
+Skilled in troubleshooting and implementing technical solutions.
+
+EXPERIENCE
+Senior Software Developer
+ABC Corporation, Anytown, USA
+June 2019 - Present
+
+• Developed web applications using JavaScript and React
+• Implemented REST APIs for data integration
+• Collaborated with teams using Agile methodologies
+• Deployed applications to AWS cloud infrastructure
+
+Software Developer
+...

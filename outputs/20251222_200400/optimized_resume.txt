@@ -1,0 +1,19 @@
+﻿JOHN DOE
+Software Developer
+(123) 456-7890 | john@email.com
+
+SUMMARY
+Developer with 3 years experience.
+
+EXPERIENCE
+Software Developer at ABC Corp
+2021-2023
+- Developed applications
+- Worked with JavaScript
+
+SKILLS
+JavaScript, HTML, CSS
+
+
+SKILLS:
+

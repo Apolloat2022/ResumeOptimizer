@@ -1,0 +1,55 @@
+{
+    "workday": {
+        "name": "Workday ATS",
+        "weights": {
+            "keywords": 0.6,
+            "formatting": 0.2,
+            "experience": 0.2
+        },
+        "vulnerabilities": [
+            "tables",
+            "columns",
+            "headers"
+        ],
+        "advice": "Workday is sensitive to complex layouts. Use standard headers and avoid tables."
+    },
+    "greenhouse": {
+        "name": "Greenhouse ATS",
+        "weights": {
+            "keywords": 0.4,
+            "formatting": 0.3,
+            "experience": 0.3
+        },
+        "vulnerabilities": [
+            "missing_sections",
+            "contact_info"
+        ],
+        "advice": "Greenhouse prioritizes section completeness and clear contact data."
+    },
+    "lever": {
+        "name": "Lever ATS",
+        "weights": {
+            "keywords": 0.5,
+            "formatting": 0.1,
+            "experience": 0.4
+        },
+        "vulnerabilities": [
+            "date_formats",
+            "image_text"
+        ],
+        "advice": "Lever focuses on chronological clarity and readable experience blocks."
+    },
+    "taleo": {
+        "name": "Taleo ATS",
+        "weights": {
+            "keywords": 0.7,
+            "formatting": 0.1,
+            "experience": 0.2
+        },
+        "vulnerabilities": [
+            "non_standard_headers",
+            "icons"
+        ],
+        "advice": "Taleo is strictly keyword-driven. Ensure exact matches for critical skills."
+    }
+}
