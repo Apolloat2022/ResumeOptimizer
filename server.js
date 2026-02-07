@@ -55,3 +55,5 @@ if (fs.existsSync(distPath)) {
 }
 
 app.listen(port, () => console.log(`🚀 TEXT OPTIMIZER ENGINE active on http://localhost:${port}`));
+
+module.exports = app;
