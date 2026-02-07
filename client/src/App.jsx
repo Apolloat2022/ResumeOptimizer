@@ -44,7 +44,7 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:5000/api/optimize', {
+      const response = await axios.post('/api/optimize', {
         resumeText,
         jobDescriptionText: jdText
       });
