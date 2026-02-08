@@ -323,10 +323,9 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {/* Footer Branding */}
       <footer className="mt-20 pt-12 border-t border-white/5 text-center space-y-2 pb-12">
         <div className="flex items-center justify-center gap-2 text-white/40 text-[10px] font-black uppercase tracking-[0.2em]">
-          <span className="flex items-center gap-1.5">Built with <Star className="w-2.5 h-2.5 text-primary fill-primary" /> by</span>
+          <span className="flex items-center gap-1.5">Built with ❤️ by</span>
           <span className="text-white hover:text-primary transition-colors duration-300">Apollo Technologies US</span>
         </div>
         <p className="text-white/20 text-[9px] font-bold tracking-widest uppercase">Prosper, TX.</p>
