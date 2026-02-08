@@ -77,7 +77,21 @@
     "zapier",
     "make.com",
     "vapi",
-    "elevenlabs"
+    "elevenlabs",
+    "salesforce",
+    "informatica",
+    "crm",
+    "erp",
+    "sap",
+    "oracle",
+    "blockchain",
+    "ethereum",
+    "smart contracts",
+    "web3",
+    "agentic",
+    "orchestration",
+    "json parsing",
+    "api integration"
   ],
   "engineering": [
     "cad",
@@ -97,7 +111,15 @@
     "civil engineering",
     "mechanical engineering",
     "electrical engineering",
-    "structural analysis"
+    "structural analysis",
+    "project manager",
+    "product manager",
+    "agile",
+    "scrum",
+    "waterfall",
+    "kanban",
+    "pmp",
+    "csm"
   ],
   "finance": [
     "financial analysis",

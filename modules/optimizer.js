@@ -15,27 +15,29 @@ try {
     console.error("Error loading intelligence data:", err);
 }
 
-const allSkills = Object.values(skillsBank).flat();
-
 /**
  * Super-Resilient Skill Extraction
  */
-function extractSkills(text) {
+function extractSkills(text, skillsList) {
     if (!text || typeof text !== 'string') return [];
     let cleanText = text.replace(/\0/g, '').replace(/\r\n/g, '\n').toLowerCase();
 
-    const spaceCount = (cleanText.match(/ /g) || []).length;
-    if (cleanText.length > 50 && spaceCount > cleanText.length * 0.4) {
-        cleanText = cleanText.replace(/(\b[a-z])\s(?=[a-z]\b)/g, '$1').replace(/\s+/g, ' ');
-    } else {
-        cleanText = cleanText.replace(/\s+/g, ' ');
-    }
+    // Standardize spacing and punctuation to help boundary matching
+    cleanText = cleanText.replace(/[/\\(),-]/g, ' ');
+    cleanText = cleanText.replace(/\s+/g, ' ');
 
     const foundSkills = new Set();
-    allSkills.forEach(skill => {
+    skillsList.forEach(skill => {
         const lowerSkill = skill.toLowerCase();
         const escaped = lowerSkill.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const regex = new RegExp(`(?:^|[^a-z0-9])${escaped}(s|es)?(?=[^a-z0-9]|$)`, 'gi');
+        // Use word boundaries \b for most, but handle dot-terms specifically
+        let regex;
+        if (escaped.includes('\\.')) {
+            regex = new RegExp(`(?:^|[^a-z0-9])${escaped}(s|es)?(?=[^a-z0-9]|$)`, 'gi');
+        } else {
+            regex = new RegExp(`\\b${escaped}(s|es)?\\b`, 'gi');
+        }
+
         if (regex.test(cleanText)) foundSkills.add(skill);
     });
 
@@ -179,8 +181,11 @@ function reconstruct(originalText, missingSkills, matchedSkills) {
 }
 
 function analyze(resumeText, jdText) {
-    const resumeSkills = extractSkills(resumeText);
-    const jdSkills = extractSkills(jdText);
+    // Fresh calculation of skills for long-running processes
+    const currentSkillsList = Object.values(skillsBank).flat();
+
+    const resumeSkills = extractSkills(resumeText, currentSkillsList);
+    const jdSkills = extractSkills(jdText, currentSkillsList);
     const formattingIssues = checkFormatting(resumeText);
     const metricsScore = checkMetrics(resumeText);
 
