@@ -4,13 +4,19 @@ const path = require('path');
 // Load data
 const skillsBankPath = path.join(__dirname, '../data/skills_bank.json');
 const atsProfilesPath = path.join(__dirname, '../data/ats_profiles.json');
+const learningResourcesPath = path.join(__dirname, '../data/learning_resources.json');
+const knowledgeBasePath = path.join(__dirname, '../data/knowledge_base.json');
 
 let skillsBank = {};
 let atsProfiles = {};
+let learningResources = {};
+let knowledgeBase = {};
 
 try {
     skillsBank = JSON.parse(fs.readFileSync(skillsBankPath, 'utf8'));
     atsProfiles = JSON.parse(fs.readFileSync(atsProfilesPath, 'utf8'));
+    learningResources = JSON.parse(fs.readFileSync(learningResourcesPath, 'utf8'));
+    knowledgeBase = JSON.parse(fs.readFileSync(knowledgeBasePath, 'utf8'));
 } catch (err) {
     console.error("Error loading intelligence data:", err);
 }
@@ -127,6 +133,25 @@ function generateChecklist(missing, formattingIssues, metricsScore) {
 }
 
 /**
+ * Click-to-Learn: Attach learning resource URLs to missing keywords.
+ * Returns a map of { keyword: [resources] } for keywords that have entries.
+ * Keywords without a mapping are silently omitted (non-breaking).
+ */
+function attachLearningResources(missingKeywords) {
+    const resourceMap = {};
+    if (!missingKeywords || !Array.isArray(missingKeywords)) return resourceMap;
+
+    missingKeywords.forEach(keyword => {
+        const key = keyword.toLowerCase();
+        // Primary lookup: learning_resources.json — fallback: knowledge_base.json
+        const resources = learningResources[key] || knowledgeBase[key];
+        if (resources) resourceMap[keyword] = resources;
+    });
+
+    return resourceMap;
+}
+
+/**
  * Section-Aware Reconstruction
  */
 function reconstruct(originalText, missingSkills, matchedSkills) {
@@ -222,13 +247,21 @@ function analyze(resumeText, jdText) {
         coachingTip = "The job description provided contains few recognizable keywords. Optimization is limited to general formatting.";
     }
 
+    // Build the learning resource map once and reuse for both keys
+    const learningResourceMap = attachLearningResources(missing);
+
     return {
         matchScore: overallMatch,
         breakdown,
         simulation,
         checklist,
         matched,
-        missing,
+        missing,                          // string[] — untouched for backward compat
+        missingWithPaths: missing.map(kw => ({
+            keyword: kw,
+            learningPath: learningResourceMap[kw] || []
+        })),
+        learningResources: learningResourceMap,
         recommendation: jdSkills.length === 0 ? "Add more technical details to the JD for better alignment." : (overallMatch > 75 ? "Strong alignment." : "Optimization required: Your resume misses critical keyword signals."),
         optimizedResume,
         coachInsight: coachingTip

@@ -21,7 +21,9 @@ import {
   ShieldCheck,
   XCircle,
   BarChart3,
-  Settings
+  Settings,
+  ExternalLink,
+  BookOpen
 } from 'lucide-react';
 import axios from 'axios';
 
@@ -35,6 +37,7 @@ const App = () => {
   const [copied, setCopied] = useState(false);
   const [viewOptimized, setViewOptimized] = useState(false);
   const [atsSimulation, setAtsSimulation] = useState(false);
+  const [learnModal, setLearnModal] = useState(null);
 
   const analyzeResume = async () => {
     if (resumeText.trim().length < 50 || jdText.trim().length < 20) {
@@ -274,11 +277,25 @@ const App = () => {
                     <div className="space-y-4">
                       <p className="text-[11px] font-black uppercase tracking-widest text-white/30 flex justify-between font-italic">Missing critical gaps ({result.missing.length}) <span className="text-red-500 italic">Danger Zone</span></p>
                       <div className="flex flex-wrap gap-2">
-                        {result.missing.map((m, i) => (
-                          <span key={i} className="bg-red-400/10 border border-red-400/20 text-red-400 text-xs px-3 py-1.5 rounded-lg font-bold flex items-center gap-2 italic">
-                            <XCircle className="w-3 h-3" /> {m}
-                          </span>
-                        ))}
+                        {result.missing.map((m, i) => {
+                          const hasResources = result.learningResources && result.learningResources[m];
+                          return hasResources ? (
+                            <button
+                              key={i}
+                              onClick={() => setLearnModal({ keyword: m, resources: result.learningResources[m] })}
+                              className="bg-red-400/10 border border-red-400/20 text-red-400 text-xs px-3 py-1.5 rounded-lg font-bold flex items-center gap-2 italic cursor-pointer hover:bg-red-400/20 hover:border-red-400/40 hover:scale-105 transition-all group"
+                            >
+                              <XCircle className="w-3 h-3" /> {m}
+                              <span className="text-[9px] font-black uppercase tracking-widest text-primary opacity-70 group-hover:opacity-100 transition-opacity non-italic ml-0.5">
+                                LEARN ↗
+                              </span>
+                            </button>
+                          ) : (
+                            <span key={i} className="bg-red-400/10 border border-red-400/20 text-red-400 text-xs px-3 py-1.5 rounded-lg font-bold flex items-center gap-2 italic">
+                              <XCircle className="w-3 h-3" /> {m}
+                            </span>
+                          );
+                        })}
                         {result.missing.length === 0 && <p className="text-green-400 italic text-sm font-black tracking-tight flex items-center gap-2"><CheckCircle2 className="w-4 h-4" /> Perfect Semantic Alignment</p>}
                       </div>
                     </div>
@@ -319,6 +336,86 @@ const App = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Click-to-Learn Modal */}
+      <AnimatePresence>
+        {learnModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setLearnModal(null)}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative z-10 w-full max-w-md glass border border-white/10 rounded-3xl overflow-hidden shadow-2xl shadow-primary/20"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="p-6 pb-4 border-b border-white/10 bg-gradient-to-r from-red-500/10 to-primary/10">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-red-400/20 rounded-xl">
+                      <BookOpen className="w-5 h-5 text-red-400" />
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Learn This Skill</p>
+                      <h3 className="text-lg font-black italic tracking-tight text-white">{learnModal.keyword}</h3>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setLearnModal(null)}
+                    className="p-2 hover:bg-white/10 rounded-xl transition-all"
+                  >
+                    <XCircle className="w-5 h-5 text-white/40 hover:text-white" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Resource Links */}
+              <div className="p-6 space-y-3">
+                <p className="text-[10px] font-black uppercase tracking-widest text-white/30 mb-4">Top Resources</p>
+                {learnModal.resources.map((resource, i) => (
+                  <a
+                    key={i}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 border border-white/5 hover:border-primary/30 rounded-2xl transition-all group"
+                  >
+                    <div className={`p-2 rounded-xl shrink-0 ${resource.source === 'Coursera' ? 'bg-blue-500/20 text-blue-400' :
+                      resource.source === 'YouTube' ? 'bg-red-500/20 text-red-400' :
+                        'bg-green-500/20 text-green-400'
+                      }`}>
+                      <BookOpen className="w-4 h-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-bold text-white/90 truncate group-hover:text-white transition-colors">{resource.title}</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-white/30">{resource.source}</p>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-white/20 group-hover:text-primary transition-colors shrink-0" />
+                  </a>
+                ))}
+              </div>
+
+              {/* Modal Footer */}
+              <div className="p-4 pt-0">
+                <button
+                  onClick={() => setLearnModal(null)}
+                  className="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-white/50 hover:text-white transition-all"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

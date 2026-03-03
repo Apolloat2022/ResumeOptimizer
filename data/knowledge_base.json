@@ -1,0 +1,653 @@
+{
+    "llm": [
+        {
+            "title": "Large Language Models – Coursera (DeepLearning.AI)",
+            "url": "https://www.coursera.org/learn/large-language-models",
+            "source": "Coursera"
+        },
+        {
+            "title": "LLM Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=large+language+models+explained",
+            "source": "YouTube"
+        },
+        {
+            "title": "Hugging Face LLM Course",
+            "url": "https://huggingface.co/learn/nlp-course/chapter1/1",
+            "source": "MDN"
+        }
+    ],
+    "rag": [
+        {
+            "title": "Retrieval-Augmented Generation – DeepLearning.AI",
+            "url": "https://www.deeplearning.ai/short-courses/building-and-evaluating-advanced-rag/",
+            "source": "Coursera"
+        },
+        {
+            "title": "RAG Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=rag+retrieval+augmented+generation+tutorial",
+            "source": "YouTube"
+        },
+        {
+            "title": "LangChain RAG Docs",
+            "url": "https://python.langchain.com/docs/tutorials/rag/",
+            "source": "MDN"
+        }
+    ],
+    "openai": [
+        {
+            "title": "OpenAI API Documentation",
+            "url": "https://platform.openai.com/docs/overview",
+            "source": "MDN"
+        },
+        {
+            "title": "OpenAI API Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=openai+api+tutorial+2024",
+            "source": "YouTube"
+        },
+        {
+            "title": "ChatGPT Prompt Engineering – Coursera",
+            "url": "https://www.coursera.org/learn/prompt-engineering-for-chatgpt",
+            "source": "Coursera"
+        }
+    ],
+    "anthropic": [
+        {
+            "title": "Anthropic Claude API Docs",
+            "url": "https://docs.anthropic.com/claude/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Claude API Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=anthropic+claude+api+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "gemini": [
+        {
+            "title": "Google Gemini API Docs",
+            "url": "https://ai.google.dev/gemini-api/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Gemini API Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=google+gemini+api+tutorial",
+            "source": "YouTube"
+        },
+        {
+            "title": "Google AI Studio – Coursera",
+            "url": "https://www.coursera.org/learn/google-ai-essentials",
+            "source": "Coursera"
+        }
+    ],
+    "vector database": [
+        {
+            "title": "Vector Databases Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=vector+database+explained+2024",
+            "source": "YouTube"
+        },
+        {
+            "title": "Vector Search Fundamentals – DeepLearning.AI",
+            "url": "https://www.deeplearning.ai/short-courses/building-applications-vector-databases/",
+            "source": "Coursera"
+        }
+    ],
+    "pinecone": [
+        {
+            "title": "Pinecone Documentation",
+            "url": "https://docs.pinecone.io/guides/get-started/overview",
+            "source": "MDN"
+        },
+        {
+            "title": "Pinecone Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=pinecone+vector+database+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "milvus": [
+        {
+            "title": "Milvus Documentation",
+            "url": "https://milvus.io/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Milvus Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=milvus+vector+database+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "blockchain": [
+        {
+            "title": "Blockchain Basics – Coursera",
+            "url": "https://www.coursera.org/learn/blockchain-basics",
+            "source": "Coursera"
+        },
+        {
+            "title": "Blockchain Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=blockchain+full+course+2024",
+            "source": "YouTube"
+        },
+        {
+            "title": "Ethereum Developer Docs",
+            "url": "https://ethereum.org/en/developers/docs/",
+            "source": "MDN"
+        }
+    ],
+    "ethereum": [
+        {
+            "title": "Ethereum Developer Docs",
+            "url": "https://ethereum.org/en/developers/docs/",
+            "source": "MDN"
+        },
+        {
+            "title": "Ethereum & Solidity – Coursera",
+            "url": "https://www.coursera.org/learn/ethereum-solidity",
+            "source": "Coursera"
+        },
+        {
+            "title": "Ethereum Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=ethereum+smart+contract+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "smart contracts": [
+        {
+            "title": "Smart Contracts – Cryptozombies",
+            "url": "https://cryptozombies.io/",
+            "source": "MDN"
+        },
+        {
+            "title": "Smart Contracts – Coursera",
+            "url": "https://www.coursera.org/learn/smarter-contracts",
+            "source": "Coursera"
+        },
+        {
+            "title": "Solidity Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=solidity+smart+contracts+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "web3": [
+        {
+            "title": "Web3.js Documentation",
+            "url": "https://docs.web3js.org/",
+            "source": "MDN"
+        },
+        {
+            "title": "Web3 Development – Coursera",
+            "url": "https://www.coursera.org/learn/web3-blockchain-foundations",
+            "source": "Coursera"
+        },
+        {
+            "title": "Web3 Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=web3+development+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "cad": [
+        {
+            "title": "CAD for Beginners – Coursera",
+            "url": "https://www.coursera.org/learn/cad-design-and-manufacturing",
+            "source": "Coursera"
+        },
+        {
+            "title": "CAD Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=cad+tutorial+for+beginners",
+            "source": "YouTube"
+        }
+    ],
+    "solidworks": [
+        {
+            "title": "SOLIDWORKS Official Tutorials",
+            "url": "https://www.solidworks.com/sw/resources/solidworks-tutorials.htm",
+            "source": "MDN"
+        },
+        {
+            "title": "SolidWorks Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=solidworks+full+course+beginner",
+            "source": "YouTube"
+        }
+    ],
+    "autocad": [
+        {
+            "title": "AutoCAD Official Tutorials",
+            "url": "https://www.autodesk.com/products/autocad/learning",
+            "source": "MDN"
+        },
+        {
+            "title": "AutoCAD Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=autocad+tutorial+2024",
+            "source": "YouTube"
+        },
+        {
+            "title": "AutoCAD – Coursera",
+            "url": "https://www.coursera.org/learn/autocad",
+            "source": "Coursera"
+        }
+    ],
+    "matlab": [
+        {
+            "title": "MATLAB Onramp – MathWorks",
+            "url": "https://matlabacademy.mathworks.com/details/matlab-onramp/gettingstarted",
+            "source": "MDN"
+        },
+        {
+            "title": "MATLAB – Coursera",
+            "url": "https://www.coursera.org/learn/matlab",
+            "source": "Coursera"
+        },
+        {
+            "title": "MATLAB Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=matlab+tutorial+for+beginners",
+            "source": "YouTube"
+        }
+    ],
+    "unit testing": [
+        {
+            "title": "Unit Testing Best Practices – YouTube",
+            "url": "https://www.youtube.com/results?search_query=unit+testing+best+practices+javascript",
+            "source": "YouTube"
+        },
+        {
+            "title": "Software Testing – Coursera",
+            "url": "https://www.coursera.org/learn/software-testing",
+            "source": "Coursera"
+        }
+    ],
+    "jest": [
+        {
+            "title": "Jest Official Documentation",
+            "url": "https://jestjs.io/docs/getting-started",
+            "source": "MDN"
+        },
+        {
+            "title": "Jest Testing Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=jest+testing+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "cypress": [
+        {
+            "title": "Cypress Official Documentation",
+            "url": "https://docs.cypress.io/guides/getting-started/introduction",
+            "source": "MDN"
+        },
+        {
+            "title": "Cypress End-to-End Testing – YouTube",
+            "url": "https://www.youtube.com/results?search_query=cypress+e2e+testing+tutorial",
+            "source": "YouTube"
+        },
+        {
+            "title": "Cypress – Coursera",
+            "url": "https://www.coursera.org/learn/cypress-test-automation-fundamentals",
+            "source": "Coursera"
+        }
+    ],
+    "shadcn": [
+        {
+            "title": "shadcn/ui Official Docs",
+            "url": "https://ui.shadcn.com/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "shadcn/ui Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=shadcn+ui+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "framer motion": [
+        {
+            "title": "Framer Motion Documentation",
+            "url": "https://www.framer.com/motion/introduction/",
+            "source": "MDN"
+        },
+        {
+            "title": "Framer Motion Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=framer+motion+react+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "prisma": [
+        {
+            "title": "Prisma Official Documentation",
+            "url": "https://www.prisma.io/docs/getting-started",
+            "source": "MDN"
+        },
+        {
+            "title": "Prisma Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=prisma+orm+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "drizzle": [
+        {
+            "title": "Drizzle ORM Documentation",
+            "url": "https://orm.drizzle.team/docs/overview",
+            "source": "MDN"
+        },
+        {
+            "title": "Drizzle ORM Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=drizzle+orm+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "pwa": [
+        {
+            "title": "Progressive Web Apps – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps",
+            "source": "MDN"
+        },
+        {
+            "title": "PWA Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=progressive+web+app+tutorial",
+            "source": "YouTube"
+        },
+        {
+            "title": "PWA with Next.js – Coursera",
+            "url": "https://www.coursera.org/learn/pwa-react",
+            "source": "Coursera"
+        }
+    ],
+    "salesforce": [
+        {
+            "title": "Salesforce Trailhead",
+            "url": "https://trailhead.salesforce.com/",
+            "source": "MDN"
+        },
+        {
+            "title": "Salesforce Admin – Coursera",
+            "url": "https://www.coursera.org/learn/salesforce-admin",
+            "source": "Coursera"
+        },
+        {
+            "title": "Salesforce Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=salesforce+tutorial+beginner",
+            "source": "YouTube"
+        }
+    ],
+    "crm": [
+        {
+            "title": "CRM Fundamentals – Coursera",
+            "url": "https://www.coursera.org/learn/crm-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "CRM Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=crm+software+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "erp": [
+        {
+            "title": "ERP Fundamentals – Coursera",
+            "url": "https://www.coursera.org/learn/erp-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "ERP Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=erp+systems+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "sap": [
+        {
+            "title": "SAP Learning Journey",
+            "url": "https://learning.sap.com/",
+            "source": "MDN"
+        },
+        {
+            "title": "SAP – Coursera",
+            "url": "https://www.coursera.org/learn/sap-technology-consultant",
+            "source": "Coursera"
+        },
+        {
+            "title": "SAP Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=sap+tutorial+for+beginners",
+            "source": "YouTube"
+        }
+    ],
+    "oracle": [
+        {
+            "title": "Oracle Learning Explorer",
+            "url": "https://mylearn.oracle.com/",
+            "source": "MDN"
+        },
+        {
+            "title": "Oracle Database – YouTube",
+            "url": "https://www.youtube.com/results?search_query=oracle+sql+tutorial+2024",
+            "source": "YouTube"
+        }
+    ],
+    "lean manufacturing": [
+        {
+            "title": "Lean Manufacturing – Coursera",
+            "url": "https://www.coursera.org/learn/lean-manufacturing",
+            "source": "Coursera"
+        },
+        {
+            "title": "Lean Manufacturing Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=lean+manufacturing+explained",
+            "source": "YouTube"
+        }
+    ],
+    "kanban": [
+        {
+            "title": "Kanban Fundamentals – Coursera",
+            "url": "https://www.coursera.org/learn/kanban-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "Kanban Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=kanban+methodology+explained",
+            "source": "YouTube"
+        }
+    ],
+    "financial analysis": [
+        {
+            "title": "Financial Analysis – Coursera",
+            "url": "https://www.coursera.org/learn/financial-analysis",
+            "source": "Coursera"
+        },
+        {
+            "title": "Financial Analysis – YouTube",
+            "url": "https://www.youtube.com/results?search_query=financial+analysis+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "accounting": [
+        {
+            "title": "Accounting Fundamentals – Coursera",
+            "url": "https://www.coursera.org/learn/accounting-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "Accounting Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=accounting+basics+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "tax planning": [
+        {
+            "title": "US Federal Taxation – Coursera",
+            "url": "https://www.coursera.org/learn/usfederal-taxation-individuals",
+            "source": "Coursera"
+        },
+        {
+            "title": "Tax Planning Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=tax+planning+strategies+explained",
+            "source": "YouTube"
+        }
+    ],
+    "risk management": [
+        {
+            "title": "Risk Management – Coursera",
+            "url": "https://www.coursera.org/learn/risk-management",
+            "source": "Coursera"
+        },
+        {
+            "title": "Risk Management Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=risk+management+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "content marketing": [
+        {
+            "title": "Content Marketing – Coursera",
+            "url": "https://www.coursera.org/learn/content-marketing",
+            "source": "Coursera"
+        },
+        {
+            "title": "Content Marketing Strategy – YouTube",
+            "url": "https://www.youtube.com/results?search_query=content+marketing+strategy+2024",
+            "source": "YouTube"
+        }
+    ],
+    "google analytics": [
+        {
+            "title": "Google Analytics 4 – Google SKillshop",
+            "url": "https://skillshop.docebosaas.com/learn/courses/14876/google-analytics-4",
+            "source": "MDN"
+        },
+        {
+            "title": "Google Analytics – Coursera",
+            "url": "https://www.coursera.org/learn/google-analytics",
+            "source": "Coursera"
+        },
+        {
+            "title": "GA4 Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=google+analytics+4+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "hubspot": [
+        {
+            "title": "HubSpot Academy",
+            "url": "https://academy.hubspot.com/",
+            "source": "MDN"
+        },
+        {
+            "title": "HubSpot CRM Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=hubspot+crm+tutorial+for+beginners",
+            "source": "YouTube"
+        }
+    ],
+    "patient care": [
+        {
+            "title": "Patient Care – Coursera",
+            "url": "https://www.coursera.org/learn/patient-safety",
+            "source": "Coursera"
+        },
+        {
+            "title": "Patient Care Fundamentals – YouTube",
+            "url": "https://www.youtube.com/results?search_query=patient+care+fundamentals",
+            "source": "YouTube"
+        }
+    ],
+    "health informatics": [
+        {
+            "title": "Health Informatics – Coursera",
+            "url": "https://www.coursera.org/specializations/health-informatics",
+            "source": "Coursera"
+        },
+        {
+            "title": "Health Informatics Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=health+informatics+explained",
+            "source": "YouTube"
+        }
+    ],
+    "agentic": [
+        {
+            "title": "AI Agents – DeepLearning.AI",
+            "url": "https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/",
+            "source": "Coursera"
+        },
+        {
+            "title": "Agentic AI Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=agentic+ai+tutorial+2024",
+            "source": "YouTube"
+        }
+    ],
+    "orchestration": [
+        {
+            "title": "Workflow Orchestration with Airflow – Coursera",
+            "url": "https://www.coursera.org/learn/airflow-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "Orchestration Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=workflow+orchestration+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "api integration": [
+        {
+            "title": "APIs – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction",
+            "source": "MDN"
+        },
+        {
+            "title": "API Integration Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=api+integration+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "json parsing": [
+        {
+            "title": "Working with JSON – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON",
+            "source": "MDN"
+        },
+        {
+            "title": "JSON Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=json+parsing+tutorial+javascript",
+            "source": "YouTube"
+        }
+    ],
+    "llama": [
+        {
+            "title": "Llama Models – Meta AI",
+            "url": "https://llama.meta.com/docs/overview",
+            "source": "MDN"
+        },
+        {
+            "title": "Run LLaMA Locally – YouTube",
+            "url": "https://www.youtube.com/results?search_query=llama+local+setup+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "vercel": [
+        {
+            "title": "Vercel Documentation",
+            "url": "https://vercel.com/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Deploy with Vercel – YouTube",
+            "url": "https://www.youtube.com/results?search_query=vercel+deployment+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "three.js": [
+        {
+            "title": "Three.js Official Docs",
+            "url": "https://threejs.org/docs/",
+            "source": "MDN"
+        },
+        {
+            "title": "Three.js Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=three.js+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "webgl": [
+        {
+            "title": "WebGL – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API",
+            "source": "MDN"
+        },
+        {
+            "title": "WebGL Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=webgl+tutorial+2024",
+            "source": "YouTube"
+        }
+    ]
+}

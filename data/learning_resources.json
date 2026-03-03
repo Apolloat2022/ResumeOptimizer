@@ -1,0 +1,628 @@
+{
+    "javascript": [
+        {
+            "title": "JavaScript Guide – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+            "source": "MDN"
+        },
+        {
+            "title": "JavaScript for Beginners – Coursera",
+            "url": "https://www.coursera.org/learn/javascript",
+            "source": "Coursera"
+        },
+        {
+            "title": "JavaScript Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=javascript+full+course+2024",
+            "source": "YouTube"
+        }
+    ],
+    "typescript": [
+        {
+            "title": "TypeScript Handbook",
+            "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+            "source": "MDN"
+        },
+        {
+            "title": "TypeScript – Coursera",
+            "url": "https://www.coursera.org/learn/typescript",
+            "source": "Coursera"
+        },
+        {
+            "title": "TypeScript Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=typescript+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "react": [
+        {
+            "title": "React Getting Started – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/React_getting_started",
+            "source": "MDN"
+        },
+        {
+            "title": "React Basics – Coursera",
+            "url": "https://www.coursera.org/learn/react-basics",
+            "source": "Coursera"
+        },
+        {
+            "title": "React Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=react+full+course+2024",
+            "source": "YouTube"
+        }
+    ],
+    "next.js": [
+        {
+            "title": "Next.js Documentation",
+            "url": "https://nextjs.org/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Next.js & React – Coursera",
+            "url": "https://www.coursera.org/learn/nextjs-react",
+            "source": "Coursera"
+        },
+        {
+            "title": "Next.js Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=next.js+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "vue": [
+        {
+            "title": "Vue.js Guide",
+            "url": "https://vuejs.org/guide/introduction.html",
+            "source": "MDN"
+        },
+        {
+            "title": "Vue.js – Coursera",
+            "url": "https://www.coursera.org/learn/vue-js",
+            "source": "Coursera"
+        }
+    ],
+    "angular": [
+        {
+            "title": "Angular Docs",
+            "url": "https://angular.dev/overview",
+            "source": "MDN"
+        },
+        {
+            "title": "Angular – Coursera",
+            "url": "https://www.coursera.org/learn/angular",
+            "source": "Coursera"
+        },
+        {
+            "title": "Angular Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=angular+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "node.js": [
+        {
+            "title": "Node.js Docs",
+            "url": "https://nodejs.org/en/learn",
+            "source": "MDN"
+        },
+        {
+            "title": "Node.js – Coursera",
+            "url": "https://www.coursera.org/learn/server-side-nodejs",
+            "source": "Coursera"
+        },
+        {
+            "title": "Node.js Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=node.js+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "express": [
+        {
+            "title": "Express.js Guide",
+            "url": "https://expressjs.com/en/starter/installing.html",
+            "source": "MDN"
+        },
+        {
+            "title": "Express – YouTube",
+            "url": "https://www.youtube.com/results?search_query=express.js+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "python": [
+        {
+            "title": "Python Tutorial – MDN/Docs",
+            "url": "https://docs.python.org/3/tutorial/",
+            "source": "MDN"
+        },
+        {
+            "title": "Python for Everybody – Coursera",
+            "url": "https://www.coursera.org/specializations/python",
+            "source": "Coursera"
+        },
+        {
+            "title": "Python Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=python+full+course+2024",
+            "source": "YouTube"
+        }
+    ],
+    "django": [
+        {
+            "title": "Django Documentation",
+            "url": "https://docs.djangoproject.com/en/stable/",
+            "source": "MDN"
+        },
+        {
+            "title": "Django for Beginners – Coursera",
+            "url": "https://www.coursera.org/learn/django-web-framework",
+            "source": "Coursera"
+        }
+    ],
+    "flask": [
+        {
+            "title": "Flask Documentation",
+            "url": "https://flask.palletsprojects.com/",
+            "source": "MDN"
+        },
+        {
+            "title": "Flask – YouTube",
+            "url": "https://www.youtube.com/results?search_query=flask+python+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "fastapi": [
+        {
+            "title": "FastAPI Documentation",
+            "url": "https://fastapi.tiangolo.com/tutorial/",
+            "source": "MDN"
+        },
+        {
+            "title": "FastAPI – YouTube",
+            "url": "https://www.youtube.com/results?search_query=fastapi+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "java": [
+        {
+            "title": "Java Programming – Coursera",
+            "url": "https://www.coursera.org/learn/java-programming",
+            "source": "Coursera"
+        },
+        {
+            "title": "Java Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=java+full+course+2024",
+            "source": "YouTube"
+        }
+    ],
+    "spring boot": [
+        {
+            "title": "Spring Boot Docs",
+            "url": "https://spring.io/projects/spring-boot",
+            "source": "MDN"
+        },
+        {
+            "title": "Spring Boot – Coursera",
+            "url": "https://www.coursera.org/learn/spring-boot",
+            "source": "Coursera"
+        }
+    ],
+    "sql": [
+        {
+            "title": "SQL Tutorial – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Glossary/SQL",
+            "source": "MDN"
+        },
+        {
+            "title": "SQL for Data Science – Coursera",
+            "url": "https://www.coursera.org/learn/sql-for-data-science",
+            "source": "Coursera"
+        },
+        {
+            "title": "SQL Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=sql+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "postgresql": [
+        {
+            "title": "PostgreSQL Documentation",
+            "url": "https://www.postgresql.org/docs/current/tutorial.html",
+            "source": "MDN"
+        },
+        {
+            "title": "PostgreSQL – YouTube",
+            "url": "https://www.youtube.com/results?search_query=postgresql+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "mongodb": [
+        {
+            "title": "MongoDB University",
+            "url": "https://learn.mongodb.com/",
+            "source": "Coursera"
+        },
+        {
+            "title": "MongoDB – YouTube",
+            "url": "https://www.youtube.com/results?search_query=mongodb+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "redis": [
+        {
+            "title": "Redis Documentation",
+            "url": "https://redis.io/docs/",
+            "source": "MDN"
+        },
+        {
+            "title": "Redis – YouTube",
+            "url": "https://www.youtube.com/results?search_query=redis+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "aws": [
+        {
+            "title": "AWS Cloud Practitioner – Coursera",
+            "url": "https://www.coursera.org/learn/aws-cloud-practitioner-essentials",
+            "source": "Coursera"
+        },
+        {
+            "title": "AWS Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=aws+cloud+tutorial+2024",
+            "source": "YouTube"
+        }
+    ],
+    "azure": [
+        {
+            "title": "Azure Fundamentals – Coursera",
+            "url": "https://www.coursera.org/learn/microsoft-azure-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "Azure – YouTube",
+            "url": "https://www.youtube.com/results?search_query=azure+fundamentals+course",
+            "source": "YouTube"
+        }
+    ],
+    "gcp": [
+        {
+            "title": "Google Cloud – Coursera",
+            "url": "https://www.coursera.org/learn/gcp-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "GCP – YouTube",
+            "url": "https://www.youtube.com/results?search_query=google+cloud+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "docker": [
+        {
+            "title": "Docker Get Started",
+            "url": "https://docs.docker.com/get-started/",
+            "source": "MDN"
+        },
+        {
+            "title": "Docker – Coursera",
+            "url": "https://www.coursera.org/learn/docker-containers",
+            "source": "Coursera"
+        },
+        {
+            "title": "Docker Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=docker+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "kubernetes": [
+        {
+            "title": "Kubernetes Docs",
+            "url": "https://kubernetes.io/docs/tutorials/",
+            "source": "MDN"
+        },
+        {
+            "title": "Kubernetes – Coursera",
+            "url": "https://www.coursera.org/learn/google-kubernetes-engine",
+            "source": "Coursera"
+        },
+        {
+            "title": "Kubernetes – YouTube",
+            "url": "https://www.youtube.com/results?search_query=kubernetes+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "terraform": [
+        {
+            "title": "Terraform Docs",
+            "url": "https://developer.hashicorp.com/terraform/tutorials",
+            "source": "MDN"
+        },
+        {
+            "title": "Terraform – YouTube",
+            "url": "https://www.youtube.com/results?search_query=terraform+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "ci/cd": [
+        {
+            "title": "CI/CD – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Glossary/CI",
+            "source": "MDN"
+        },
+        {
+            "title": "CI/CD – YouTube",
+            "url": "https://www.youtube.com/results?search_query=cicd+pipeline+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "machine learning": [
+        {
+            "title": "Machine Learning – Coursera (Andrew Ng)",
+            "url": "https://www.coursera.org/learn/machine-learning",
+            "source": "Coursera"
+        },
+        {
+            "title": "ML Crash Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=machine+learning+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "data science": [
+        {
+            "title": "Data Science – Coursera",
+            "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+            "source": "Coursera"
+        },
+        {
+            "title": "Data Science – YouTube",
+            "url": "https://www.youtube.com/results?search_query=data+science+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "nlp": [
+        {
+            "title": "NLP Specialization – Coursera",
+            "url": "https://www.coursera.org/specializations/natural-language-processing",
+            "source": "Coursera"
+        },
+        {
+            "title": "NLP Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=nlp+natural+language+processing+course",
+            "source": "YouTube"
+        }
+    ],
+    "ai": [
+        {
+            "title": "AI for Everyone – Coursera",
+            "url": "https://www.coursera.org/learn/ai-for-everyone",
+            "source": "Coursera"
+        },
+        {
+            "title": "AI Full Course – YouTube",
+            "url": "https://www.youtube.com/results?search_query=artificial+intelligence+course",
+            "source": "YouTube"
+        }
+    ],
+    "generative ai": [
+        {
+            "title": "Generative AI – Coursera",
+            "url": "https://www.coursera.org/learn/generative-ai-with-llms",
+            "source": "Coursera"
+        },
+        {
+            "title": "Generative AI – YouTube",
+            "url": "https://www.youtube.com/results?search_query=generative+ai+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "prompt engineering": [
+        {
+            "title": "Prompt Engineering – Coursera",
+            "url": "https://www.coursera.org/learn/prompt-engineering",
+            "source": "Coursera"
+        },
+        {
+            "title": "Prompt Engineering – YouTube",
+            "url": "https://www.youtube.com/results?search_query=prompt+engineering+guide",
+            "source": "YouTube"
+        }
+    ],
+    "langchain": [
+        {
+            "title": "LangChain Docs",
+            "url": "https://python.langchain.com/docs/get_started/introduction",
+            "source": "MDN"
+        },
+        {
+            "title": "LangChain – YouTube",
+            "url": "https://www.youtube.com/results?search_query=langchain+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "graphql": [
+        {
+            "title": "GraphQL – MDN/Docs",
+            "url": "https://graphql.org/learn/",
+            "source": "MDN"
+        },
+        {
+            "title": "GraphQL – YouTube",
+            "url": "https://www.youtube.com/results?search_query=graphql+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "rest api": [
+        {
+            "title": "REST API – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Glossary/REST",
+            "source": "MDN"
+        },
+        {
+            "title": "REST API Design – YouTube",
+            "url": "https://www.youtube.com/results?search_query=rest+api+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "microservices": [
+        {
+            "title": "Microservices – Coursera",
+            "url": "https://www.coursera.org/learn/microservices",
+            "source": "Coursera"
+        },
+        {
+            "title": "Microservices – YouTube",
+            "url": "https://www.youtube.com/results?search_query=microservices+architecture+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "cybersecurity": [
+        {
+            "title": "Cybersecurity – Coursera",
+            "url": "https://www.coursera.org/professional-certificates/google-cybersecurity",
+            "source": "Coursera"
+        },
+        {
+            "title": "Cybersecurity – YouTube",
+            "url": "https://www.youtube.com/results?search_query=cybersecurity+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "git": [
+        {
+            "title": "Git Handbook – MDN",
+            "url": "https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/GitHub",
+            "source": "MDN"
+        },
+        {
+            "title": "Git & GitHub – YouTube",
+            "url": "https://www.youtube.com/results?search_query=git+and+github+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "agile": [
+        {
+            "title": "Agile – Coursera",
+            "url": "https://www.coursera.org/learn/agile-project-management",
+            "source": "Coursera"
+        },
+        {
+            "title": "Agile Methodology – YouTube",
+            "url": "https://www.youtube.com/results?search_query=agile+methodology+explained",
+            "source": "YouTube"
+        }
+    ],
+    "scrum": [
+        {
+            "title": "Scrum – Coursera",
+            "url": "https://www.coursera.org/learn/introduction-to-scrum",
+            "source": "Coursera"
+        },
+        {
+            "title": "Scrum Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=scrum+tutorial+for+beginners",
+            "source": "YouTube"
+        }
+    ],
+    "seo": [
+        {
+            "title": "SEO – Coursera",
+            "url": "https://www.coursera.org/learn/seo-fundamentals",
+            "source": "Coursera"
+        },
+        {
+            "title": "SEO – YouTube",
+            "url": "https://www.youtube.com/results?search_query=seo+tutorial+2024",
+            "source": "YouTube"
+        }
+    ],
+    "excel": [
+        {
+            "title": "Excel – Coursera",
+            "url": "https://www.coursera.org/learn/excel-skills-for-business",
+            "source": "Coursera"
+        },
+        {
+            "title": "Excel Tutorial – YouTube",
+            "url": "https://www.youtube.com/results?search_query=excel+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "financial modeling": [
+        {
+            "title": "Financial Modeling – Coursera",
+            "url": "https://www.coursera.org/learn/financial-modeling",
+            "source": "Coursera"
+        },
+        {
+            "title": "Financial Modeling – YouTube",
+            "url": "https://www.youtube.com/results?search_query=financial+modeling+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "project management": [
+        {
+            "title": "Google Project Management – Coursera",
+            "url": "https://www.coursera.org/professional-certificates/google-project-management",
+            "source": "Coursera"
+        },
+        {
+            "title": "Project Management – YouTube",
+            "url": "https://www.youtube.com/results?search_query=project+management+full+course",
+            "source": "YouTube"
+        }
+    ],
+    "six sigma": [
+        {
+            "title": "Six Sigma – Coursera",
+            "url": "https://www.coursera.org/learn/six-sigma-principles",
+            "source": "Coursera"
+        },
+        {
+            "title": "Six Sigma – YouTube",
+            "url": "https://www.youtube.com/results?search_query=six+sigma+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "hipaa": [
+        {
+            "title": "HIPAA – Coursera",
+            "url": "https://www.coursera.org/learn/hipaa",
+            "source": "Coursera"
+        },
+        {
+            "title": "HIPAA Explained – YouTube",
+            "url": "https://www.youtube.com/results?search_query=hipaa+explained",
+            "source": "YouTube"
+        }
+    ],
+    "tailwind css": [
+        {
+            "title": "Tailwind CSS Docs",
+            "url": "https://tailwindcss.com/docs/installation",
+            "source": "MDN"
+        },
+        {
+            "title": "Tailwind CSS – YouTube",
+            "url": "https://www.youtube.com/results?search_query=tailwind+css+crash+course",
+            "source": "YouTube"
+        }
+    ],
+    "firebase": [
+        {
+            "title": "Firebase Docs",
+            "url": "https://firebase.google.com/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Firebase – YouTube",
+            "url": "https://www.youtube.com/results?search_query=firebase+tutorial",
+            "source": "YouTube"
+        }
+    ],
+    "supabase": [
+        {
+            "title": "Supabase Docs",
+            "url": "https://supabase.com/docs",
+            "source": "MDN"
+        },
+        {
+            "title": "Supabase – YouTube",
+            "url": "https://www.youtube.com/results?search_query=supabase+tutorial",
+            "source": "YouTube"
+        }
+    ]
+}
