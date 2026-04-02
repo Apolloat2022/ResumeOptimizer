@@ -110,26 +110,26 @@ const App = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-[400px]">
-              <div className="glass p-10 flex flex-col h-full border-white/5 border">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="glass p-6 md:p-10 flex flex-col border-white/5 border min-h-[350px] md:min-h-[400px]">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-primary/20 rounded-xl text-primary"><Edit3 className="w-6 h-6" /></div>
                   <h3 className="text-xl font-black italic tracking-tight uppercase">Resume Content</h3>
                 </div>
                 <textarea
-                  className="w-full flex-grow bg-black/40 border-2 border-white/5 rounded-3xl p-8 focus:ring-4 focus:ring-primary/10 focus:outline-none transition-all resize-none text-white/90 font-mono text-sm leading-relaxed"
+                  className="w-full flex-grow bg-black/40 border-2 border-white/5 rounded-3xl p-6 md:p-8 focus:ring-4 focus:ring-primary/10 focus:outline-none transition-all resize-none text-white/90 font-mono text-sm leading-relaxed"
                   placeholder="Paste resume here..."
                   value={resumeText}
                   onChange={(e) => setResumeText(e.target.value)}
                 />
               </div>
-              <div className="glass p-10 flex flex-col h-full border-white/5 border">
+              <div className="glass p-6 md:p-10 flex flex-col border-white/5 border min-h-[350px] md:min-h-[400px]">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-secondary/20 rounded-xl text-secondary"><Target className="w-6 h-6" /></div>
                   <h3 className="text-xl font-black italic tracking-tight uppercase">Job Description</h3>
                 </div>
                 <textarea
-                  className="w-full flex-grow bg-black/40 border-2 border-white/5 rounded-3xl p-8 focus:ring-4 focus:ring-secondary/10 focus:outline-none transition-all resize-none text-white/90 font-mono text-sm leading-relaxed"
+                  className="w-full flex-grow bg-black/40 border-2 border-white/5 rounded-3xl p-6 md:p-8 focus:ring-4 focus:ring-secondary/10 focus:outline-none transition-all resize-none text-white/90 font-mono text-sm leading-relaxed"
                   placeholder="Paste JD requirements here..."
                   value={jdText}
                   onChange={(e) => setJdText(e.target.value)}
@@ -137,8 +137,8 @@ const App = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-4 pt-12">
-              <button onClick={analyzeResume} disabled={loading} className="btn-primary px-20 py-6 text-2xl flex items-center gap-4 group">
+            <div className="mt-12 flex justify-center relative z-10 w-full px-2">
+              <button onClick={analyzeResume} disabled={loading} className="btn-primary w-full md:w-auto px-8 md:px-24 py-5 md:py-6 text-xl md:text-2xl flex justify-center items-center gap-4 group">
                 {loading ? <RefreshCcw className="animate-spin" /> : <>PERFORM DEEP SCAN <ArrowRight className="group-hover:translate-x-2 transition-transform" /></>}
               </button>
             </div>
